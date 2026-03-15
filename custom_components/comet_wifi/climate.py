@@ -102,7 +102,7 @@ class CometWifiThermostat(ClimateEntity):
 
     def _subscribe_topics(self):
         """Subscribe to MQTT topics to receive updates."""
-        topic = f"03/00002F71/{self._unique_id}/V/#"
+        topic = f"02/0001AE88/{self._unique_id}/V/#"
 
         @callback
         def message_received(msg):
@@ -160,7 +160,7 @@ class CometWifiThermostat(ClimateEntity):
 
     async def _publish_temperature(self, temperature):
         temp_hex = "#" + "%0x" % int(float(temperature) * 2)
-        topic = f"03/00002F71/{self._unique_id}/S/A0"
+        topic = f"02/0001AE88/{self._unique_id}/S/A0"
 
         await self.mqtt_client.async_publish(
             topic=topic,
